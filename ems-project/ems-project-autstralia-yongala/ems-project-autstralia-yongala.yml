@@ -1,0 +1,81 @@
+
+server:
+  port: 8815
+spring:
+  kafka:
+    bootstrap-servers: 192.168.2.50:9092,192.168.2.51:9092,192.168.2.52:9092
+    consumer:
+      group-id: ems-task-consumer
+  redis:
+    database: 0
+    host: 192.168.2.13
+    port: 8811
+    password: Jhf&*d93jfdKJSf
+    pool:
+      max-active: 400
+      max-wait: 10000
+      max-idle: 100
+      min-idle: 0
+    timeout: 0
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 10000
+        loggerLevel: basic
+ftp:
+  hostname: ftp.wanketest.com
+  port: 21
+  username: wanke
+  password: wanke
+  timeout: 30000
+  dataTimeout: 180000 
+  defaultTimeout: 180000
+j2cache:
+  #开启spring cache支持
+  open-spring-cache: true
+  broadcast: redis
+  L1:
+    provider_class: caffeine
+  L2:
+    provider_class: redis
+  sync_ttl_to_redis: true
+  default_cache_null_object: true
+  serialization: fastjson
+caffeine:
+  region:
+    default: 1000, 30m
+redis:
+  mode: single
+  storage: generic
+  channel: j2cache
+  cluster_name: j2cache
+  namespace:
+  hosts: 192.168.2.13:8811
+  timeout: 2000
+  password: Jhf&*d93jfdKJSf
+  database: 0
+  maxTotal: 100
+  maxIdle: 100
+  maxWaitMillis: 10000
+  minEvictableIdleTimeMillis: 60000
+  minIdle: 0
+  numTestsPerEvictionRun: 10
+  lifo: false
+  softMinEvictableIdleTimeMillis: 10
+  testOnBorrow: true
+  testOnReturn: false
+  testWhileIdle: true
+  timeBetweenEvictionRunsMillis: 300000
+  blockWhenExhausted: false
+  jmxEnabled: false

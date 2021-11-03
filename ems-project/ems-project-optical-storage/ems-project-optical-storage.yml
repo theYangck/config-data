@@ -1,0 +1,49 @@
+server:
+  port: 9088
+remote:
+  api:
+    name: API-DB-DEV
+spring:
+  data: 
+    neo4j:
+      username: neo4j
+      password: neo4j@wankeauto.com
+      uri: http://192.168.2.116:7475
+  kafka: 
+    bootstrap-servers: 192.168.2.50:9092,192.168.2.51:9092,192.168.2.52:9092
+    consumer: 
+      group-id: consumer-optical-storage-develop
+  datasource:
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    driverClassName: com.mysql.cj.jdbc.Driver
+    filters: stat,wall,log4j
+    initialSize: 5
+    maxActive: 200
+    maxPoolPreparedStatementPerConnectionSize: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 5
+    password: 5j1#H!^d
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.2.13:3306/sgool4?useUnicode=true&characterEncoding=utf-8
+    username: wanke
+    validationQuery: SELECT 1 FROM DUAL
+user:
+  manager:
+    name: gongkongji
+    password: 73769fbd0a83ade1dbcd2c9229259c9d
+    type: Platform
+    enable: true
+    refreshInterval: 1
+    foreceRefreshInterval: 120
+    
+    
+# 极光推送配置(Powerlution life)
+jpush:
+  alert: alert
+  notice: notice

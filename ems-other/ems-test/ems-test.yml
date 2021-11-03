@@ -1,0 +1,28 @@
+server:
+  port: 8999
+spring:
+  data: 
+    neo4j:
+      username: neo4j
+      password: neo4j@wankeauto.com
+      uri: http://192.168.2.116:7475
+feign:
+  hystrix:
+    enabled: true
+#feign调用默认是1000毫秒=1秒 设置成更长时间1000 * 60 * 5  = 5分钟
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 300000
+      circuitBreaker:
+        sleepWindowInMilliseconds: 300000
+        forceClosed: true
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 300000
+  SocketTimeout: 300000
+  #请求连接的超时时间
+  ConnectTimeout: 30000
